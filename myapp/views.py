@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 
 
@@ -27,3 +28,8 @@ def product_list(request):
 def product_detail(request, product_slug):
     """Return response for an request route"""
     return render(request, "product_detail.html", {"product_slug": product_slug})
+
+
+def comment(request):
+    """Return response for an request route"""
+    return HttpResponse("This is a comment")

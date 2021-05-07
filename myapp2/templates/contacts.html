@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div>We have {{ contacts|length }} contacts</div>
+<ul>
+    {% for contact in contacts %}
+        <li><a href="{% url "contact_detail" contact_slug=contact.url %}">{{ contact.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+
+{% block main_page %}
+<a href="{% url "home" %}">Homepage</a>
+{% endblock main_page %}

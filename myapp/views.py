@@ -1,22 +1,29 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
-def home(request):
+def homepage(request):
     """Return response for an request route"""
-    return HttpResponse("Homepage")
+    return render(request, "home.html")
 
 
-def about(request):
+def product_list(request):
     """Return response for an request route"""
-    return HttpResponse("About site")
+
+    context = {
+        "title": "Products List",
+        "products": [
+            {"title": "Product #1", "url": "product-1"},
+            {"title": "Product #2", "url": "product-2"},
+            {"title": "Product #3", "url": "product-3"},
+            {"title": "Product #4", "url": "product-4"},
+            {"title": "Product #5", "url": "product-5"},
+            {"title": "Product #6", "url": "product-6"},
+            {"title": "Product #7", "url": "product-7"},
+        ]
+    }
+    return render(request, "product.html", context)
 
 
-def user(request):
+def product_detail(request, product_slug):
     """Return response for an request route"""
-    return HttpResponse("All users")
-
-
-def user_id(request, user_id, name=''):
-    """Return response for an request route"""
-    return HttpResponse("This is a user #{}. {}".format(user_id, "Name of this user is {}".format(
-            name) if name else "This is unnamed user"))
+    return render(request, "product_detail.html", {"product_slug": product_slug})

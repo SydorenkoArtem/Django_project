@@ -1,9 +1,8 @@
 from django.urls import path
-from myapp2.views import home, products, catalog
+from myapp2.views import homepage, contacts, contact_detail
 
 urlpatterns = [
-    path("homepage/", home),
-    path("products/<slug:product_id>", products),
-    path("catalog/", catalog),
-
+    path("", homepage, name="home"),
+    path("contact/", contacts, name="contacts"),
+    path("contact/<contact_slug>/", contact_detail, name="contact_detail"),
 ]

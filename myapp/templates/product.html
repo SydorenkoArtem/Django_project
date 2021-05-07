@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div>We have {{ products|length }} products</div>
+<ul>
+    {% for product in products %}
+        <li><a href="{% url "detail" product_slug=product.url %}">{{ product.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+
+{% block main_page %}
+<a href="{% url "home" %}">Homepage</a>
+{% endblock main_page %}
